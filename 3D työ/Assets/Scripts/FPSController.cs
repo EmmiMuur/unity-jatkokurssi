@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class FPSController : MonoBehaviour
@@ -71,5 +72,12 @@ public class FPSController : MonoBehaviour
         #endregion
     }
 
-
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.transform.tag == "deathcollider") 
+        {
+            // k‰ynnist‰‰ nykyisen kent‰n uudestaan
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
 }
